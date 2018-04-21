@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .accordion-wrap{
+            width: 812px;
+
+        }
+        ul li{
+            float:left;
+        }
+        .fold{
+            width:100px;
+            height: 500px;
+            background: blue;
+            border: 1px solid #666;
+        }
+        .unfold{
+            width:300px;
+            height: 500px;
+            display:none;
+            background:red;
+            border:1px solid #ccc;
+        }
+        .clearfix{
+            clear: both;
+            height: 0;        
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="accordion-wrap">        
+        <ul>
+            <li class="accordion">
+                <div class="fold" style="display:none;"></div>
+                <div class="unfold" style="display:block;">0000</div>
+            </li>
+            <li class="accordion">
+                <div class="fold" ><h1>点击呼叫</h1></div>
+                <div class="unfold">111111111111</div>
+            </li>
+            <li class="accordion">
+                <div class="fold"><h1>直拨通话</h1></div>
+                <div class="unfold">22222222222</div>
+            </li>
+            <li class="accordion">
+                <div class="fold"><h1>回拨通话</h1></div>
+                <div class="unfold">33333333333</div>
+            </li>
+            <li class="accordion">
+                <div class="fold"><h1>互联网通话</h1></div>
+                <div class="unfold">444444444</div>
+            </li>
+            <li class="accordion">
+                <div class="fold"><h1>语音</h1></div>
+                <div class="unfold">555555</div>
+            </li>
+            <!--<div class="clearfix"></div>-->
+        </ul>       
+    </div>
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function(){
+            // $('.accordion-wrap ul li').each(function(){
+            //     var fold = $(this).find(".fold");
+            //     if(fold.is(":hidden")){
+            //         $(this).width(300);
+            //         console.log(this);
+            //     }else{
+            //         $(this).width(100);
+            //     }
+                
+            // })
+            $('.accordion-wrap ul li').click(function(){
+                var index = $(this).index();
+                console.log(this);
+                $(this).animate({width:300},200);
+                $(this).find(".unfold").show();
+				$(this).find(".fold").hide();
+                $(this).siblings().animate({width:100},200);
+                $(this).siblings().find(".unfold").hide();
+				$(this).siblings().find(".fold").show();
+            })
+        })
+    </script>
+</body>
+</html>
